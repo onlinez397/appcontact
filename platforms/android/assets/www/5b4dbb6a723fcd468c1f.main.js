@@ -33036,10 +33036,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 
 let self;
@@ -33062,26 +33058,7 @@ function addData(sources){
 
 		        }
 		      },
-		    //   created: function(){
-				// 		this.$http.post('http://mcampus.hsmc.edu.hk/cyrus/test_contact.php')
-				// 	    .then(response => {
-				// 	      this.sources = response.data[0].Rows;
-				//
-				// 	    }, headers: {
-        //
-        // 'Origin':"https://developer.riotgames.com"
-        //  }
 
- //
- // 						created: function(){
- // 						 this.$http.post('http://mcampus.hsmc.edu.hk/cyrus/test_contact.php')
- // 							 .then(response => {
- // 								 this.sources = response.data[0].Rows;
- //
- // 							 },{headers: {
- // 								 'X-CSRF-Token': undefined,
- // 'Origin':"http://mcampus.hsmc.edu.hk/"
- // 							 }})
 
 
 								 created: function(){
@@ -33105,19 +33082,6 @@ function addData(sources){
 
 
 										addData(self.sources);
-
-
-
-								//  created: function(){
-								// 	this.$http.post('http://mcampus.hsmc.edu.hk/cyrus/test_contact.php')
-								// 		.then(response => {
-								// 			this.sources = response.data[0].Rows;
-								 //
-								// 		}
-
-			// this.$http.get('https://newsapi.org/v1/sources?language=en').then(response =>{
-		  //   this.sources = response.data.sources;
-		  // })
 
 
 		}
@@ -33428,43 +33392,47 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('f7-list-item', {
     attrs: {
       "smart-select": "",
-      "title": "Fruit"
+      "title": "Fruit",
+      "smart-select-open-in": "picker"
     }
   }, [_c('select', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.searchdept),
+      expression: "searchdept"
+    }],
     attrs: {
       "name": "fruits"
+    },
+    on: {
+      "change": function($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function(o) {
+          return o.selected
+        }).map(function(o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val
+        });
+        _vm.searchdept = $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+      }
     }
   }, [_c('option', {
     attrs: {
-      "value": "apple",
+      "value": "",
       "selected": ""
     }
-  }, [_vm._v("Apple")]), _vm._v(" "), _vm._v(" \"department in departments\" value=\"pineapple\">Pineapple"), _vm._v(" "), _c('option', {
-    attrs: {
-      "value": "pear"
-    }
-  }, [_vm._v("Pear")]), _vm._v(" "), _c('option', {
-    attrs: {
-      "value": "orange"
-    }
-  }, [_vm._v("Orange")]), _vm._v(" "), _c('option', {
-    attrs: {
-      "value": "melon"
-    }
-  }, [_vm._v("Melon")]), _vm._v(" "), _c('option', {
-    attrs: {
-      "value": "peach"
-    }
-  }, [_vm._v("Peach")]), _vm._v(" "), _c('option', {
-    attrs: {
-      "value": "banana"
-    }
-  }, [_vm._v("Banana")])])])], 1), _vm._v(" "), _c('f7-list', {
+  }, [_vm._v("Please select department ...")]), _vm._v(" "), _vm._l((_vm.departments), function(department) {
+    return _c('option', {
+      domProps: {
+        "value": department.fullname
+      }
+    }, [_vm._v(_vm._s(department.fullname))])
+  })], 2)])], 1), _vm._v(" "), _c('f7-list', {
     staticClass: "hsmcstaff",
     attrs: {
       "media-list": ""
     }
-  }, _vm._l((_vm.filterBy(_vm.sources, _vm.searchme)), function(source) {
+  }, _vm._l((_vm.filterBy(_vm.sources, _vm.searchdept)), function(source) {
     return _c('f7-list-item', {
       attrs: {
         "link": "#",

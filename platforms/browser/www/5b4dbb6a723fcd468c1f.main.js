@@ -33058,26 +33058,7 @@ function addData(sources){
 
 		        }
 		      },
-		    //   created: function(){
-				// 		this.$http.post('http://mcampus.hsmc.edu.hk/cyrus/test_contact.php')
-				// 	    .then(response => {
-				// 	      this.sources = response.data[0].Rows;
-				//
-				// 	    }, headers: {
-        //
-        // 'Origin':"https://developer.riotgames.com"
-        //  }
 
- //
- // 						created: function(){
- // 						 this.$http.post('http://mcampus.hsmc.edu.hk/cyrus/test_contact.php')
- // 							 .then(response => {
- // 								 this.sources = response.data[0].Rows;
- //
- // 							 },{headers: {
- // 								 'X-CSRF-Token': undefined,
- // 'Origin':"http://mcampus.hsmc.edu.hk/"
- // 							 }})
 
 
 								 created: function(){
@@ -33101,19 +33082,6 @@ function addData(sources){
 
 
 										addData(self.sources);
-
-
-
-								//  created: function(){
-								// 	this.$http.post('http://mcampus.hsmc.edu.hk/cyrus/test_contact.php')
-								// 		.then(response => {
-								// 			this.sources = response.data[0].Rows;
-								 //
-								// 		}
-
-			// this.$http.get('https://newsapi.org/v1/sources?language=en').then(response =>{
-		  //   this.sources = response.data.sources;
-		  // })
 
 
 		}
@@ -33424,7 +33392,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('f7-list-item', {
     attrs: {
       "smart-select": "",
-      "title": "Fruit"
+      "title": "Fruit",
+      "smart-select-open-in": "picker"
     }
   }, [_c('select', {
     directives: [{
@@ -33463,7 +33432,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "media-list": ""
     }
-  }, _vm._l((_vm.filterBy(_vm.sources, _vm.searchme)), function(source) {
+  }, _vm._l((_vm.filterBy(_vm.sources, _vm.searchdept)), function(source) {
     return _c('f7-list-item', {
       attrs: {
         "link": "#",

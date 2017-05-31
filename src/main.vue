@@ -37,16 +37,16 @@
 
 						<f7-searchbar cancel-link="Cancel" placeholder="Search in items" :clear="true" v-model="searchme"></f7-searchbar>
 
-						<f7-list form>
+						<f7-list form >
 							<!-- Enables Smart Select behavior by adding "smart-select" prop -->
-							<f7-list-item smart-select title="Fruit" >
+						 <f7-list-item smart-select title="Fruit"  smart-select-open-in="picker">
 								<!-- Select with values inside -->
 								<select name="fruits" v-model="searchdept">
 									  <option value="" selected>Please select department ...</option>
 									<option v-for="department in departments" :value="department.fullname">{{department.fullname}}</option>
 
 								</select>
-							</f7-list-item>
+							 </f7-list-item>
 							<!-- Multiple Smart Select With Searchbar -->
 
 						</f7-list>
@@ -71,7 +71,7 @@
 
 								<!-- <f7-list-item v-for="source in filterBy(sources, searchme) " >{{source.display_name}}</f7-list-item> -->
 
-								<f7-list-item link="#" v-on:click="onClick()" v-for="source in filterBy(sources, searchme)"  media='<img src ="https://expertbeacon.com/sites/default/files/advice_for_men_on_selecting_your_online_dating_profile_photo.jpg">' :title="source.display_name"   :subtitle="source.department_fullname" :text="source.ext"
+								<f7-list-item link="#" v-on:click="onClick()" v-for="source in filterBy(sources, searchdept)"  media='<img src ="https://expertbeacon.com/sites/default/files/advice_for_men_on_selecting_your_online_dating_profile_photo.jpg">' :title="source.display_name"   :subtitle="source.department_fullname" :text="source.ext"
      ></f7-list-item>
 
 
@@ -110,26 +110,7 @@ export default {
 
 		        }
 		      },
-		    //   created: function(){
-				// 		this.$http.post('http://mcampus.hsmc.edu.hk/cyrus/test_contact.php')
-				// 	    .then(response => {
-				// 	      this.sources = response.data[0].Rows;
-				//
-				// 	    }, headers: {
-        //
-        // 'Origin':"https://developer.riotgames.com"
-        //  }
 
- //
- // 						created: function(){
- // 						 this.$http.post('http://mcampus.hsmc.edu.hk/cyrus/test_contact.php')
- // 							 .then(response => {
- // 								 this.sources = response.data[0].Rows;
- //
- // 							 },{headers: {
- // 								 'X-CSRF-Token': undefined,
- // 'Origin':"http://mcampus.hsmc.edu.hk/"
- // 							 }})
 
 
 								 created: function(){
@@ -153,19 +134,6 @@ export default {
 
 
 										addData(self.sources);
-
-
-
-								//  created: function(){
-								// 	this.$http.post('http://mcampus.hsmc.edu.hk/cyrus/test_contact.php')
-								// 		.then(response => {
-								// 			this.sources = response.data[0].Rows;
-								 //
-								// 		}
-
-			// this.$http.get('https://newsapi.org/v1/sources?language=en').then(response =>{
-		  //   this.sources = response.data.sources;
-		  // })
 
 
 		}
