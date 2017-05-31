@@ -33036,6 +33036,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 let self;
@@ -33052,7 +33053,7 @@ function addData(sources){
 		        return{
 		          sources:[],
 		          source: '',
-							searchme:'',
+							filterName:'',
 							departments:[],
 							department:''
 
@@ -33062,8 +33063,8 @@ function addData(sources){
 
 
 								 created: function(){
-									self= this;
 
+									self= this;
 									this.$http.post('http://mcampus.hsmc.edu.hk/cyrus/test_contact.php')
 										.then(response => {
 
@@ -33084,6 +33085,14 @@ function addData(sources){
 										addData(self.sources);
 
 
+
+		},
+		computed:{
+			filteredStaffs(){
+				return this.staffs.filter((element) => {
+              return element.display_name.match(this.filterName);
+          });
+			}
 		}
 
 
@@ -33379,11 +33388,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "clear": true
     },
     model: {
-      value: (_vm.searchme),
+      value: (_vm.filterName),
       callback: function($$v) {
-        _vm.searchme = $$v
+        _vm.filterName = $$v
       },
-      expression: "searchme"
+      expression: "filterName"
     }
   }), _vm._v(" "), _c('f7-list', {
     attrs: {
@@ -33432,7 +33441,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "media-list": ""
     }
-  }, _vm._l((_vm.filterBy(_vm.sources, _vm.searchdept)), function(source) {
+  }, _vm._l((_vm.filteredStaffs), function(source) {
     return _c('f7-list-item', {
       attrs: {
         "link": "#",

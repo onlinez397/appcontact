@@ -35,7 +35,7 @@
 				<f7-pages>
 					<f7-page>
 
-						<f7-searchbar cancel-link="Cancel" placeholder="Search in items" :clear="true" v-model="searchme"></f7-searchbar>
+						<f7-searchbar cancel-link="Cancel" placeholder="Search contacts" :clear="true" v-model="filterName"></f7-searchbar>
 
 						<f7-list form >
 							<!-- Enables Smart Select behavior by adding "smart-select" prop -->
@@ -71,12 +71,13 @@
 
 								<!-- <f7-list-item v-for="source in filterBy(sources, searchme) " >{{source.display_name}}</f7-list-item> -->
 
-								<f7-list-item link="#" v-on:click="onClick()" v-for="source in filterBy(sources, searchdept)"  media='<img src ="https://expertbeacon.com/sites/default/files/advice_for_men_on_selecting_your_online_dating_profile_photo.jpg">' :title="source.display_name"   :subtitle="source.department_fullname" :text="source.ext"
+								<f7-list-item link="#" v-on:click="onClick()" v-for="source in filteredDepartments"  media='<img src ="https://expertbeacon.com/sites/default/files/advice_for_men_on_selecting_your_online_dating_profile_photo.jpg">' :title="source.display_name"   :subtitle="source.department_fullname" :text="source.ext"
      ></f7-list-item>
 
 
 
 						</f7-list>
+
 
 					</f7-page>
 				</f7-pages>
@@ -104,9 +105,10 @@ export default {
 		        return{
 		          sources:[],
 		          source: '',
-							searchme:'',
+							filterName:'',
 							departments:[],
-							department:''
+							department:'',
+							searchdept:''
 
 		        }
 		      },
@@ -114,8 +116,8 @@ export default {
 
 
 								 created: function(){
-									self= this;
 
+									self= this;
 									this.$http.post('http://mcampus.hsmc.edu.hk/cyrus/test_contact.php')
 										.then(response => {
 
@@ -136,6 +138,19 @@ export default {
 										addData(self.sources);
 
 
+
+		},
+		computed:{
+			filteredStaffs(){
+				return this.sources.filter((element) => {
+              return element.display_name.match(this.filterName);
+          });
+			},
+			filteredDepartments(){
+				return this.filteredStaffs.filter((element)=>{
+				return element.department_fullname.match(this.searchdept)
+			})
+			}
 		}
 
 
