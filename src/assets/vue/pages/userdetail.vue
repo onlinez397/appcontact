@@ -7,25 +7,121 @@
   <p id="name">{{staff.display_name}}</p>
   <p id = "title">{{staff.employment_title}}</p>
   </div>
-
-
-
-
+<a href="https://www.w3schools.com/tags/tag_address.asp">there is some link</a>
   <f7-block inner >
 
-
-
+    <!-- <p><a href="#" class="button" v-on:click="phoneCall(staff.phonenumber)">{{staff.phonenumber}}</a></p>
+    <p><a href="#"  v-on:click="phoneCall(staff.phonenumber)">{{staff.phonenumber}}</a></p>
+    <f7-list>
+      <f7-list-item  icon="icon-bars" v-on:click="phoneCall(staff.phonenumber)" :title="staff.phonenumber"> </f7-list-item>
+      <f7-list-item  title="Contacts"></f7-list-item>
+    </f7-list>
     <p><i class="icon icon-f7"></i> &nbsp  {{staff.display_name}}</p>
     <p>{{staff.display_chinesename}}</p>
     <p><i class="f7-icons email"></i> &nbsp {{staff.email}}</p>
     <p>{{staff.department_code}}</p>
     <p>{{staff.employment_title}}</p>
+    <p>This is {{staff.phonenumber}}</p> -->
+
+    <div class="list-block">
+      <ul>
+
+        <li class="item-content" >
+
+          <div class="item-media" ><i class="f7-icons">person_fill</i></div>
+          <div class="item-inner" >
+            <div class="item-title">{{staff.display_chinesename}}</div>
+
+          </div>
+
+        </li>
+        <li class="item-content"  v-on:click="phoneCall(staff.phonenumber)">
+
+          <div class="item-media" ><i class="f7-icons">phone_fill</i></div>
+          <div class="item-inner" >
+            <div class="item-title">{{staff.phonenumber}}</div>
+
+          </div>
+
+        </li>
+        <li href="" class="item-content" >
+
+          <div class="item-media" ><i class="f7-icons">email_fill</i></div>
+          <div class="item-inner" >
+            <div class="item-title"><a href="https://www.w3schools.com/tags/tag_address.asp">{{staff.mailto}}</a></div>
+
+          </div>
+
+        </li>
+        <li class="item-content" >
+
+          <div class="item-media" ><i class="f7-icons">briefcase_fill</i></div>
+          <div class="item-inner" >
+            <div class="item-title">{{staff.department_fullname}}</div>
+
+          </div>
+
+        </li>
+        <li class="item-content" >
+
+          <div class="item-media" ><i class="f7-icons">navigation_fill</i></div>
+          <div class="item-inner" >
+            <div class="item-title">{{staff.room}}</div>
+
+          </div>
+
+        </li>
+
+      </ul>
+
+    </div>
+
+
 
 
   </f7-block>
 
+  <f7-fab-speed-dial>
+
+    <f7-fab-actions>
+      <f7-fab-action color="pink" @click="phoneCall(staff.phonenumber)">A</f7-fab-action>
+      <f7-fab-action color="orange" href="https://www.w3schools.com/tags/tag_address.asp" @click="onActionClick">B</f7-fab-action>
+      <f7-fab-action color="green" :href='staff.mailto'   @click="onActionClick">C</f7-fab-action>
+    </f7-fab-actions>
 
 
+    <f7-fab>
+
+      <i class="f7-icons">navigation_fill</i>
+
+      <f7-icon icon="icon-close"></f7-icon>
+    </f7-fab>
+  </f7-fab-speed-dial>
+
+  <!-- <div class="speed-dial">
+
+    <a href="#" class="floating-button">
+
+      <i class="icon icon-plus"></i>
+
+      <i class="icon icon-close"></i>
+    </a>
+
+    <div class="speed-dial-buttons">
+
+      <a href="#" class="green" v-on:click="phoneCall(staff.phonenumber)">
+        <i class="f7-icons">phone_fill</i>
+      </a>
+
+      <a href="#">
+        <i class="icon demo-icon-calendar"></i>
+      </a>
+
+      <a href="#">
+        <i class="icon demo-icon-upload"></i>
+      </a>
+    </div>
+  </div> -->
 </f7-page>
 
 
@@ -41,6 +137,12 @@ import store from '../../../store.js'
         staff:store.selectedStaff
 
     }
+  },
+  methods:{
+    phoneCall:function(number){
+      window.location.href = "tel:"+number
+
+    }
   }
 }
 </script>
@@ -52,7 +154,7 @@ import store from '../../../store.js'
 
 #profile_div{
 background: linear-gradient(-45deg, #479eaf, #56ad8b);
-height: 50%;
+height: 45%;
 text-align: center; margin: 1em 0;
 
 }
@@ -64,10 +166,12 @@ height:130px;
 display: block;
 margin: auto;
 padding-top: 30px;
-
-
-
 }
+
+#profile_div p{
+  line-height: 50%;
+}
+
 
 #name{
   font-size:x-large;

@@ -31,8 +31,9 @@
         <f7-page>
 
           <f7-searchbar cancel-link="Cancel" placeholder="Search contacts" :clear="true" v-model="filterName"></f7-searchbar>
-          <f7-icon icon="icon-home"></f7-icon>
-          <!-- <i class="f7-icons">download_round_fill</i> -->
+<p><a href="#" class="button" v-on:click="phoneCall('110')">Usual Button 1</a></p>
+          <!-- <f7-icon icon="icon-home"></f7-icon> -->
+        <i class="f7-icons">download_round_fill</i>
           <f7-list form>
             <!-- Enables Smart Select behavior by adding "smart-select" prop -->
             <f7-list-item smart-select title="Department" smart-select-open-in="picker">
@@ -50,12 +51,13 @@
           <f7-list　 class="hsmcstaff" media-list="">
 
             <f7-list-item link="/userdetail/" v-on:click="onClick(staff)" v-for="staff in filteredDepartments" media='<img src ="https://expertbeacon.com/sites/default/files/advice_for_men_on_selecting_your_online_dating_profile_photo.jpg">' :title="staff.display_name"
-              :subtitle="staff.department_fullname"  :text="staff.ext"></f7-list-item>
+              :subtitle="staff.department_fullname"  :text="staff.phonenumber"></f7-list-item>
 
             </f7-list>
 
 
         </f7-page>
+
       </f7-pages>
     </f7-view>
   </f7-views>
@@ -73,8 +75,9 @@ let self;
 
 function addData(staffs) {
   for (let staff of staffs) {
-
-    staff.profile_image_url = '<img src="https://ecampus.hsmc.edu.hk/moodle/myhsmc/staff/staffpicture.php?id=' + staff.id + '">'
+    staff.phonenumber = '39635'+staff.ext;
+    staff.profile_image_url = '<img src="https://ecampus.hsmc.edu.hk/moodle/myhsmc/staff/staffpicture.php?id=' + staff.id + '">';
+    staff.mailto = 'maillto:'+staff.email;
     // 'https://ecampus.hsmc.edu.hk/moodle/myhsmc/staff/staffpicture.php?id='+staff.id
   }
 }
@@ -87,7 +90,9 @@ export default {
       departments: [],
       department: '',
       searchdept: '',
-      loading: false
+      loading: false,
+      number:'',
+      mailto:''
 
     }
   },
@@ -95,6 +100,10 @@ export default {
   methods: {
     onClick: function(staff) {
       store.selectedStaff = staff;
+
+    },
+    phoneCall:function(number){
+      window.location.href = "tel:"+number
 
     }
   },
@@ -109,6 +118,7 @@ export default {
         let result = response.data[0].Rows;
         store.staffs = result;
         self.$data.staffs = result;
+        addData(self.staffs);
         // this.loading = false;
       }, {
         headers: {
@@ -130,7 +140,7 @@ export default {
       })
 
 
-    addData(self.staffs);
+    // addData(self.staffs);
 
 
   },

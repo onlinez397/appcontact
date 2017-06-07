@@ -32746,7 +32746,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../~/css-loader/lib/
 
 
 // module
-exports.push([module.i, "\n.navbar{\r\n  /*background-color: yellow*/\n}\n#profile_div{\r\nbackground: linear-gradient(-45deg, #479eaf, #56ad8b);\r\nheight: 50%;\r\ntext-align: center; margin: 1em 0;\n}\n#profile_div img{\r\nborder-radius: 100%;\r\nwidth: 130px;\r\nheight:130px;\r\n\r\ndisplay: block;\r\nmargin: auto;\r\npadding-top: 30px;\n}\n#name{\r\n  font-size:x-large;\r\n  color: white;\r\n  font: arial bold;\n}\n#title{\r\n  font-size:medium;\r\n  color:black;\r\n  font: arial italic;\r\n/*font: italic bold arial,Georgia, serif;*/\n}\r\n/*\r\n#profile_div img:before{\r\n  display: block;\r\n  \tpadding-top: 100%;\r\n}*/\r\n\r\n\r\n\r\n", ""]);
+exports.push([module.i, "\n.navbar{\r\n  /*background-color: yellow*/\n}\n#profile_div{\r\nbackground: linear-gradient(-45deg, #479eaf, #56ad8b);\r\nheight: 45%;\r\ntext-align: center; margin: 1em 0;\n}\n#profile_div img{\r\nborder-radius: 100%;\r\nwidth: 130px;\r\nheight:130px;\r\n\r\ndisplay: block;\r\nmargin: auto;\r\npadding-top: 30px;\n}\n#profile_div p{\r\n  line-height: 50%;\n}\n#name{\r\n  font-size:x-large;\r\n  color: white;\r\n  font: arial bold;\n}\n#title{\r\n  font-size:medium;\r\n  color:black;\r\n  font: arial italic;\r\n/*font: italic bold arial,Georgia, serif;*/\n}\r\n/*\r\n#profile_div img:before{\r\n  display: block;\r\n  \tpadding-top: 100%;\r\n}*/\r\n\r\n\r\n\r\n", ""]);
 
 // exports
 
@@ -33302,12 +33302,114 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 	/* harmony default export */ __webpack_exports__["default"] = ({
     data(){
     return{
         staff:__WEBPACK_IMPORTED_MODULE_0__store_js__["a" /* default */].selectedStaff
+
+    }
+  },
+  methods:{
+    phoneCall:function(number){
+      window.location.href = "tel:"+number
 
     }
   }
@@ -33393,6 +33495,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -33401,8 +33505,9 @@ let self;
 
 function addData(staffs) {
   for (let staff of staffs) {
-
-    staff.profile_image_url = '<img src="https://ecampus.hsmc.edu.hk/moodle/myhsmc/staff/staffpicture.php?id=' + staff.id + '">'
+    staff.phonenumber = '39635'+staff.ext;
+    staff.profile_image_url = '<img src="https://ecampus.hsmc.edu.hk/moodle/myhsmc/staff/staffpicture.php?id=' + staff.id + '">';
+    staff.mailto = 'maillto:'+staff.email;
     // 'https://ecampus.hsmc.edu.hk/moodle/myhsmc/staff/staffpicture.php?id='+staff.id
   }
 }
@@ -33415,7 +33520,9 @@ function addData(staffs) {
       departments: [],
       department: '',
       searchdept: '',
-      loading: false
+      loading: false,
+      number:'',
+      mailto:''
 
     }
   },
@@ -33423,6 +33530,10 @@ function addData(staffs) {
   methods: {
     onClick: function(staff) {
       __WEBPACK_IMPORTED_MODULE_0__store_js__["a" /* default */].selectedStaff = staff;
+
+    },
+    phoneCall:function(number){
+      window.location.href = "tel:"+number
 
     }
   },
@@ -33437,6 +33548,7 @@ function addData(staffs) {
         let result = response.data[0].Rows;
         __WEBPACK_IMPORTED_MODULE_0__store_js__["a" /* default */].staffs = result;
         self.$data.staffs = result;
+        addData(self.staffs);
         // this.loading = false;
       }, {
         headers: {
@@ -33458,7 +33570,7 @@ function addData(staffs) {
       })
 
 
-    addData(self.staffs);
+    // addData(self.staffs);
 
 
   },
@@ -33763,15 +33875,110 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "id": "title"
     }
-  }, [_vm._v(_vm._s(_vm.staff.employment_title))])]), _vm._v(" "), _c('f7-block', {
+  }, [_vm._v(_vm._s(_vm.staff.employment_title))])]), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "https://www.w3schools.com/tags/tag_address.asp"
+    }
+  }, [_vm._v("there is some link")]), _vm._v(" "), _c('f7-block', {
     attrs: {
       "inner": ""
     }
-  }, [_c('p', [_c('i', {
-    staticClass: "icon icon-f7"
-  }), _vm._v("    " + _vm._s(_vm.staff.display_name))]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.staff.display_chinesename))]), _vm._v(" "), _c('p', [_c('i', {
-    staticClass: "f7-icons email"
-  }), _vm._v("   " + _vm._s(_vm.staff.email))]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.staff.department_code))]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.staff.employment_title))])])], 1)
+  }, [_c('div', {
+    staticClass: "list-block"
+  }, [_c('ul', [_c('li', {
+    staticClass: "item-content"
+  }, [_c('div', {
+    staticClass: "item-media"
+  }, [_c('i', {
+    staticClass: "f7-icons"
+  }, [_vm._v("person_fill")])]), _vm._v(" "), _c('div', {
+    staticClass: "item-inner"
+  }, [_c('div', {
+    staticClass: "item-title"
+  }, [_vm._v(_vm._s(_vm.staff.display_chinesename))])])]), _vm._v(" "), _c('li', {
+    staticClass: "item-content",
+    on: {
+      "click": function($event) {
+        _vm.phoneCall(_vm.staff.phonenumber)
+      }
+    }
+  }, [_c('div', {
+    staticClass: "item-media"
+  }, [_c('i', {
+    staticClass: "f7-icons"
+  }, [_vm._v("phone_fill")])]), _vm._v(" "), _c('div', {
+    staticClass: "item-inner"
+  }, [_c('div', {
+    staticClass: "item-title"
+  }, [_vm._v(_vm._s(_vm.staff.phonenumber))])])]), _vm._v(" "), _c('li', {
+    staticClass: "item-content",
+    attrs: {
+      "href": ""
+    }
+  }, [_c('div', {
+    staticClass: "item-media"
+  }, [_c('i', {
+    staticClass: "f7-icons"
+  }, [_vm._v("email_fill")])]), _vm._v(" "), _c('div', {
+    staticClass: "item-inner"
+  }, [_c('div', {
+    staticClass: "item-title"
+  }, [_c('a', {
+    attrs: {
+      "href": "https://www.w3schools.com/tags/tag_address.asp"
+    }
+  }, [_vm._v(_vm._s(_vm.staff.mailto))])])])]), _vm._v(" "), _c('li', {
+    staticClass: "item-content"
+  }, [_c('div', {
+    staticClass: "item-media"
+  }, [_c('i', {
+    staticClass: "f7-icons"
+  }, [_vm._v("briefcase_fill")])]), _vm._v(" "), _c('div', {
+    staticClass: "item-inner"
+  }, [_c('div', {
+    staticClass: "item-title"
+  }, [_vm._v(_vm._s(_vm.staff.department_fullname))])])]), _vm._v(" "), _c('li', {
+    staticClass: "item-content"
+  }, [_c('div', {
+    staticClass: "item-media"
+  }, [_c('i', {
+    staticClass: "f7-icons"
+  }, [_vm._v("navigation_fill")])]), _vm._v(" "), _c('div', {
+    staticClass: "item-inner"
+  }, [_c('div', {
+    staticClass: "item-title"
+  }, [_vm._v(_vm._s(_vm.staff.room))])])])])])]), _vm._v(" "), _c('f7-fab-speed-dial', [_c('f7-fab-actions', [_c('f7-fab-action', {
+    attrs: {
+      "color": "pink"
+    },
+    on: {
+      "click": function($event) {
+        _vm.phoneCall(_vm.staff.phonenumber)
+      }
+    }
+  }, [_vm._v("A")]), _vm._v(" "), _c('f7-fab-action', {
+    attrs: {
+      "color": "orange",
+      "href": "https://www.w3schools.com/tags/tag_address.asp"
+    },
+    on: {
+      "click": _vm.onActionClick
+    }
+  }, [_vm._v("B")]), _vm._v(" "), _c('f7-fab-action', {
+    attrs: {
+      "color": "green",
+      "href": _vm.staff.mailto
+    },
+    on: {
+      "click": _vm.onActionClick
+    }
+  }, [_vm._v("C")])], 1), _vm._v(" "), _c('f7-fab', [_c('i', {
+    staticClass: "f7-icons"
+  }, [_vm._v("navigation_fill")]), _vm._v(" "), _c('f7-icon', {
+    attrs: {
+      "icon": "icon-close"
+    }
+  })], 1)], 1)], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -33829,11 +34036,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "filterName"
     }
-  }), _vm._v(" "), _c('f7-icon', {
+  }), _vm._v(" "), _c('p', [_c('a', {
+    staticClass: "button",
     attrs: {
-      "icon": "icon-home"
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        _vm.phoneCall('110')
+      }
     }
-  }), _vm._v(" "), _c('f7-list', {
+  }, [_vm._v("Usual Button 1")])]), _vm._v(" "), _c('i', {
+    staticClass: "f7-icons"
+  }, [_vm._v("download_round_fill")]), _vm._v(" "), _c('f7-list', {
     attrs: {
       "form": ""
     }
@@ -33895,7 +34110,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "media": "<img src =\"https://expertbeacon.com/sites/default/files/advice_for_men_on_selecting_your_online_dating_profile_photo.jpg\">",
         "title": staff.display_name,
         "subtitle": staff.department_fullname,
-        "text": staff.ext
+        "text": staff.phonenumber
       },
       on: {
         "click": function($event) {
