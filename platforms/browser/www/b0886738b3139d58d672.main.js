@@ -33497,6 +33497,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -33535,6 +33536,9 @@ function addData(staffs) {
     phoneCall:function(number){
       window.location.href = "tel:"+number
 
+    },
+    sendMail:function(){
+      window.location.href = "mailto:sales@withheld.com"
     }
   },
   created() {
@@ -33571,6 +33575,11 @@ function addData(staffs) {
 
 
     // addData(self.staffs);
+    if (typeof(Storage) !== "undefined") {
+      alert("Storage is here")
+    }else{
+      alert("There is no storage!!")
+    }
 
 
   },
@@ -34046,7 +34055,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.phoneCall('110')
       }
     }
-  }, [_vm._v("Usual Button 1")])]), _vm._v(" "), _c('i', {
+  }, [_vm._v("Phone call")])]), _vm._v(" "), _c('p', [_c('a', {
+    staticClass: "button",
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": _vm.sendMail
+    }
+  }, [_vm._v("Email")])]), _vm._v(" "), _c('i', {
     staticClass: "f7-icons"
   }, [_vm._v("download_round_fill")]), _vm._v(" "), _c('f7-list', {
     attrs: {

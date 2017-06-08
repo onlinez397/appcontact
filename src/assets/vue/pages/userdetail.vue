@@ -3,11 +3,11 @@
   <f7-navbar  title="Detail" back-link="Back" sliding></f7-navbar>
   <div id="profile_div">
 
-  <p><img src="https://expertbeacon.com/sites/default/files/advice_for_men_on_selecting_your_online_dating_profile_photo.jpg" /></p>
+  <p><img :src='staff.profile_image_src' /></p>
   <p id="name">{{staff.display_name}}</p>
   <p id = "title">{{staff.employment_title}}</p>
   </div>
-<a href="https://www.w3schools.com/tags/tag_address.asp">there is some link</a>
+
   <f7-block inner >
 
     <!-- <p><a href="#" class="button" v-on:click="phoneCall(staff.phonenumber)">{{staff.phonenumber}}</a></p>
@@ -44,11 +44,11 @@
           </div>
 
         </li>
-        <li href="" class="item-content" >
+        <li href="" class="item-content" v-on:click="sendMail(staff.email)" >
 
           <div class="item-media" ><i class="f7-icons">email_fill</i></div>
           <div class="item-inner" >
-            <div class="item-title"><a href="https://www.w3schools.com/tags/tag_address.asp">{{staff.mailto}}</a></div>
+            <div class="item-title">{{staff.email}}</a></div>
 
           </div>
 
@@ -81,21 +81,22 @@
 
   </f7-block>
 
-  <f7-fab-speed-dial>
+  <f7-fab-speed-dial >
 
     <f7-fab-actions>
-      <f7-fab-action color="pink" @click="phoneCall(staff.phonenumber)">A</f7-fab-action>
-      <f7-fab-action color="orange" href="https://www.w3schools.com/tags/tag_address.asp" @click="onActionClick">B</f7-fab-action>
-      <f7-fab-action color="green" :href='staff.mailto'   @click="onActionClick">C</f7-fab-action>
+      <f7-fab-action color="green" @click="phoneCall(staff.phonenumber)"><i class="f7-icons">phone_fill</i></f7-fab-action>
+      <f7-fab-action color="orange" @click="sendMail(staff.email)"><i class="f7-icons">email_fill</i></f7-fab-action>
+
     </f7-fab-actions>
 
 
-    <f7-fab>
+    <f7-fab color="pink">
 
-      <i class="f7-icons">navigation_fill</i>
+    <i class="fa fa-plus" aria-hidden="true"></i>
 
-      <f7-icon icon="icon-close"></f7-icon>
-    </f7-fab>
+      <i class="fa fa-minus" aria-hidden="true"></i>
+
+      </f7-fab>
   </f7-fab-speed-dial>
 
   <!-- <div class="speed-dial">
@@ -142,6 +143,9 @@ import store from '../../../store.js'
     phoneCall:function(number){
       window.location.href = "tel:"+number
 
+    },
+    sendMail:function(email){
+      window.location.href = "mailto:"+email
     }
   }
 }
@@ -185,6 +189,16 @@ padding-top: 30px;
   color:black;
   font: arial italic;
 /*font: italic bold arial,Georgia, serif;*/
+}
+
+
+.floating-button {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.speed-dial-buttons a{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
 }
 /*
 #profile_div img:before{

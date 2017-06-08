@@ -31,9 +31,17 @@
         <f7-page>
 
           <f7-searchbar cancel-link="Cancel" placeholder="Search contacts" :clear="true" v-model="filterName"></f7-searchbar>
-<p><a href="#" class="button" v-on:click="phoneCall('110')">Usual Button 1</a></p>
-          <!-- <f7-icon icon="icon-home"></f7-icon> -->
-        <i class="f7-icons">download_round_fill</i>
+          <f7-list media-list>
+  <f7-list-item
+    link="/item/"
+    media="<img src='http://mcampus.hsmc.edu.hk/sumiin/staff/staffImage.php?id=96&amp;thumb=1'>"
+    title="Item Title"
+    subtitle="Item Subtitle"
+    text="Some text"
+    after="Read more"
+  ></f7-list-item>
+</f7-list>
+
           <f7-list form>
             <!-- Enables Smart Select behavior by adding "smart-select" prop -->
             <f7-list-item smart-select title="Department" smart-select-open-in="picker">
@@ -50,8 +58,10 @@
 
           <f7-list　 class="hsmcstaff" media-list="">
 
-            <f7-list-item link="/userdetail/" v-on:click="onClick(staff)" v-for="staff in filteredDepartments" media='<img src ="https://expertbeacon.com/sites/default/files/advice_for_men_on_selecting_your_online_dating_profile_photo.jpg">' :title="staff.display_name"
-              :subtitle="staff.department_fullname"  :text="staff.phonenumber"></f7-list-item>
+            <!-- <f7-list-item link="/userdetail/" v-on:click="onClick(staff)" v-for="staff in filteredDepartments" media='<img src ="https://expertbeacon.com/sites/default/files/advice_for_men_on_selecting_your_online_dating_profile_photo.jpg">' :title="staff.display_name"
+              :subtitle="staff.department_fullname"  :text="staff.phonenumber"></f7-list-item> -->
+              <f7-list-item link="/userdetail/" v-on:click="onClick(staff)" v-for="staff in filteredDepartments" :media="staff.profile_image_url" :title="staff.display_name"
+                :subtitle="staff.department_fullname"  :text="staff.phonenumber"></f7-list-item>
 
             </f7-list>
 
@@ -76,7 +86,8 @@ let self;
 function addData(staffs) {
   for (let staff of staffs) {
     staff.phonenumber = '39635'+staff.ext;
-    staff.profile_image_url = '<img src="https://ecampus.hsmc.edu.hk/moodle/myhsmc/staff/staffpicture.php?id=' + staff.id + '">';
+    staff.profile_image_src = 'http://mcampus.hsmc.edu.hk/sumiin/staff/staffImage.php?id='+staff.id+'&amp;thumb=1';
+    staff.profile_image_url = '<img src="http://mcampus.hsmc.edu.hk/sumiin/staff/staffImage.php?id='+staff.id+'&amp;thumb=1">';
     staff.mailto = 'maillto:'+staff.email;
     // 'https://ecampus.hsmc.edu.hk/moodle/myhsmc/staff/staffpicture.php?id='+staff.id
   }
@@ -105,6 +116,9 @@ export default {
     phoneCall:function(number){
       window.location.href = "tel:"+number
 
+    },
+    sendMail:function(){
+      window.location.href = "mailto:sales@withheld.com"
     }
   },
   created() {
@@ -170,6 +184,15 @@ export default {
   width: 80px;
   background-size: cover;
 }
+
+.item-media img {
+  border-radius: 100%;
+  height: 80px;
+  width: 80px;
+  background-size: cover;
+}
+
+
 
 
 </style>
