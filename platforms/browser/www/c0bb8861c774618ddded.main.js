@@ -32756,7 +32756,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../~/css-loader/lib/
 
 
 // module
-exports.push([module.i, "\n.navbar{\r\n  /*background-color: yellow*/\n}\n#profile_div{\r\nbackground: linear-gradient(-45deg, #479eaf, #56ad8b);\r\nheight: 45%;\r\ntext-align: center; margin: 1em 0;\n}\n#profile_div img{\r\nborder-radius: 100%;\r\nwidth: 130px;\r\nheight:130px;\r\n\r\ndisplay: block;\r\nmargin: auto;\r\npadding-top: 30px;\n}\n#profile_div p{\r\n  line-height: 50%;\n}\n#name{\r\n  font-size:x-large;\r\n  color: white;\r\n  font: arial bold;\n}\n#title{\r\n  font-size:medium;\r\n  color:black;\r\n  font: arial italic;\r\n/*font: italic bold arial,Georgia, serif;*/\n}\n.floating-button {\r\n  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n}\n.speed-dial-buttons a{\r\n  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n}\r\n/*\r\n#profile_div img:before{\r\n  display: block;\r\n  \tpadding-top: 100%;\r\n}*/\r\n\r\n\r\n\r\n", ""]);
+exports.push([module.i, "\n.navbar{\r\n  /*background-color: yellow*/\n}\n#profile_div{\r\nbackground: linear-gradient(-45deg, #479eaf, #56ad8b);\r\nheight: 45%;\r\ntext-align: center; margin: 1em 0;\n}\n#profile_div img{\r\nborder-radius: 100%;\r\nwidth: 130px;\r\nheight:130px;\r\n\r\n/*display: block;*/\r\nmargin: auto;\r\n/*padding-top: 30px;*/\r\n/*position: absolute;*/\r\n\r\nposition: relative;\r\ntop: 30px;\n}\n#profile_div p{\r\n  line-height: 50%;\n}\n#name{\r\n  font-size:x-large;\r\n  color: white;\r\n  font: arial;\r\n  font-style: bold;\r\n  position: relative;\r\n  top: 20px;\r\n\r\n  /*transform: translateY(80%);*/\n}\n#title{\r\n  font-size:medium;\r\n  color:black;\r\n  font: arial ;\r\n  font-style: italic;\r\n  position: relative;\r\n  top: 20px;\r\n\r\n  /*transform: translateY(80%);*/\r\n/*font: italic bold arial,Georgia, serif;*/\n}\n.floating-button {\r\n  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n}\n.speed-dial-buttons a{\r\n  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n}\r\n/*\r\n#profile_div img:before{\r\n  display: block;\r\n  \tpadding-top: 100%;\r\n}*/\r\n\r\n\r\n\r\n", ""]);
 
 // exports
 
@@ -32775,7 +32775,7 @@ exports = module.exports = __webpack_require__(/*! ../~/css-loader/lib/css-base.
 
 
 // module
-exports.push([module.i, "\n.hsmcstaff .item-media img {\r\n  border-radius: 100%;\r\n  height: 80px;\r\n  width: 80px;\r\n  background-size: cover;\n}\n.item-media img {\n  border-radius: 100%;\n  height: 80px;\n  width: 80px;\n  background-size: cover;\n}\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.hsmcstaff .item-media img {\r\n  border-radius: 100%;\r\n  height: 80px;\r\n  width: 80px;\r\n  background-size: cover;\r\n  /*border:1px solid #021a40;*/\n}\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -33521,6 +33521,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -33563,11 +33564,19 @@ function addData(staffs) {
     },
     sendMail:function(){
       window.location.href = "mailto:sales@withheld.com"
-    }
+    },
+    showLoading:function(){
+        window.f7.showPreloader();
+    },
+    hideLoading:function(){
+        window.f7.hidePreloader();
+    },
+
   },
   created() {
-    self = this;
 
+    self = this;
+// showLoading();
     this.$http.post('http://mcampus.hsmc.edu.hk/cyrus/test_contact.php')
       .then(response => {
 
@@ -33578,6 +33587,7 @@ function addData(staffs) {
         self.$data.staffs = result;
         addData(self.staffs);
         // this.loading = false;
+
       }, {
         headers: {
           'X-CSRF-Token': undefined
@@ -33596,8 +33606,8 @@ function addData(staffs) {
           'X-CSRF-Token': undefined
         }
       })
-
-
+      //
+      // hideLoading();
     // addData(self.staffs);
 
 
@@ -34068,19 +34078,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), _c('f7-list', {
     attrs: {
-      "media-list": ""
-    }
-  }, [_c('f7-list-item', {
-    attrs: {
-      "link": "/item/",
-      "media": "<img src='http://mcampus.hsmc.edu.hk/sumiin/staff/staffImage.php?id=96&thumb=1'>",
-      "title": "Item Title",
-      "subtitle": "Item Subtitle",
-      "text": "Some text",
-      "after": "Read more"
-    }
-  })], 1), _vm._v(" "), _c('f7-list', {
-    attrs: {
       "form": ""
     }
   }, [_c('f7-list-item', {
@@ -34134,7 +34131,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "media-list": ""
     }
-  }, _vm._l((_vm.filteredDepartments), function(staff) {
+  }, [_c('transition-group', _vm._l((_vm.filteredDepartments), function(staff) {
     return _c('f7-list-item', {
       attrs: {
         "link": "/userdetail/",
@@ -34149,7 +34146,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     })
-  }))], 1)], 1)], 1)], 1)], 1)
+  }))], 1)], 1)], 1)], 1)], 1)], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {

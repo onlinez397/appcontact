@@ -1,7 +1,7 @@
 // Import Vue
 import Vue from 'vue'
 import VueResource from 'vue-resource'
-
+import VueInfiniteLoading from 'vue-infinite-loading'
 import Vue2Filters from 'vue2-filters'
 // Import F7
 import Framework7 from 'framework7'
@@ -32,6 +32,7 @@ import App from './main.vue'
 Vue.use(Framework7Vue)
 Vue.use(VueResource)
 Vue.use(Vue2Filters)
+Vue.use(VueInfiniteLoading)
 // Init App
 new Vue({
   el: '#app',
@@ -45,6 +46,7 @@ new Vue({
   },
   // Register App Component
   components: {
-    app: App
+    app: App,
+
   }
 })

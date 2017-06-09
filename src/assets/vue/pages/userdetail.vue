@@ -2,8 +2,8 @@
 <f7-page class="theme-cyan">
   <f7-navbar  title="Detail" back-link="Back" sliding></f7-navbar>
   <div id="profile_div">
+<p><img :src='staff.profile_image_src' /></p>
 
-  <p><img :src='staff.profile_image_src' /></p>
   <p id="name">{{staff.display_name}}</p>
   <p id = "title">{{staff.employment_title}}</p>
   </div>
@@ -167,27 +167,44 @@ border-radius: 100%;
 width: 130px;
 height:130px;
 
-display: block;
+/*display: block;*/
 margin: auto;
-padding-top: 30px;
+/*padding-top: 30px;*/
+/*position: absolute;*/
+
+position: relative;
+top: 30px;
+
 }
 
 #profile_div p{
   line-height: 50%;
+
+
 }
 
 
 #name{
   font-size:x-large;
   color: white;
-  font: arial bold;
+  font: arial;
+  font-style: bold;
+  position: relative;
+  top: 20px;
+
+  /*transform: translateY(80%);*/
 
 }
 
 #title{
   font-size:medium;
   color:black;
-  font: arial italic;
+  font: arial ;
+  font-style: italic;
+  position: relative;
+  top: 20px;
+
+  /*transform: translateY(80%);*/
 /*font: italic bold arial,Georgia, serif;*/
 }
 
